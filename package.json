@@ -3,26 +3,29 @@
   "version": "0.0.1",
   "description": "make debug utility module reloadable",
   "main": "debug.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git://github.com/jangxyz/debug-reloadable.git"
   },
   "dependencies": {
-    "debug": "2.2.0",
+    "debug": "2.2.0"
   },
   "keywords": [
     "debug",
     "debugger",
     "log"
   ],
-  "author": "Kim, Jang-hwan",
+  "author": {
+    "name": "Kim, Jang-hwan",
+    "email": "janghwan@gmail.com"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jangxyz/debug-reloadable/issues"
   },
   "homepage": "https://github.com/jangxyz/debug-reloadable",
   "devDependencies": {
+    "express": "^4.13.3"
   }
 }
