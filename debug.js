@@ -1,20 +1,30 @@
 
 var _debug = require('debug');
 
+
+function reloadable(namespace, _debugModule) {
+    var fn = function() {
+        var newDebug = _debugModule(namespace);
+        //this.enabled = newDebug.enabled; // no use.
+        newDebug.apply(newDebug, arguments);
+    }
+    fn.namespace = namespace;
+
+    return fn;
+}
+
+
 var originalDebug;
 var patch = function(_debug) {
     originalDebug = _debug;
 
-    _debug.reloadable = function wrapDebugWithReload(namespace) {
-        var fn = function() {
-            var newDebug = _debug(namespace);
-            //this.enabled = newDebug.enabled; // no use.
-            newDebug.apply(newDebug, arguments);
-        }
-        fn.namespace = namespace;
-
-        return fn;
+    //
+    _debug.reloadable = function(namespace) {
+        return reloadable(namespace, _debug);
     };
+
+    //
+    _debug.middleware = middleware;
 
     return _debug;
 };
